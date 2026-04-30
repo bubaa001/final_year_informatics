@@ -4,3 +4,4 @@ so on your end you have to make sure you have pythone and venv activated to run 
 lets see if it can pull
 Nickson ameshajoin
 tanzania
+here we go
