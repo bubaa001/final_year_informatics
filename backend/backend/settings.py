@@ -39,14 +39,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'api',
-    'tasks',
+    
     'accounts',
+    'courses',
 
     'rest_framework',
     'rest_framework_simplejwt',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -54,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -134,3 +138,25 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',  # we’ll tighten this later
     ),
 }
+
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",    # Vite's default port
+    "http://127.0.0.1:5173",
+]
+
+
+# JWT Settings
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),     # Access token valid for 60 min
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),        # Refresh token valid for 1 day
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'AUTH_HEADER_TYPES': ('Bearer',),                   # Token type in headers
+}
+
+
+# backend/backend/settings.py - Add this line
+AUTH_USER_MODEL = 'accounts.User'
