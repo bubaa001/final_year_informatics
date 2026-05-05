@@ -25,4 +25,6 @@ now # we are installing the requirements.txt,if you do not understand what is th
 # anyways if u are confused with the text above in your vs code.. top apo kuna view so click view and you will see terminal so when u see terminal u are directly on root dir prove it by ls command..
 
 then run pip install -r requirements.txt
+jesika is kulakula
+
 nickson is sturborn and has mbig komweeeee
